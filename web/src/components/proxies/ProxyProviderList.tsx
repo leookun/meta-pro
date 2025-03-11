@@ -8,7 +8,7 @@ export function ProxyProviderList({ items }: { items: FormattedProxyProvider[] }
 
   return (
     <>
-      <ContentHeader title="代理供应商" />
+      <ContentHeader title="订阅池" />
       <div>
         {items.map((item) => (
           <ProxyProvider

@@ -50,9 +50,9 @@ const langOptions = [
 ];
 
 const modeOptions = [
-  ['Global', 'Global'],
-  ['Rule', 'Rule'],
-  ['Direct', 'Direct'],
+  ['Global', '全局'],
+  ['Rule', '规则'],
+  ['Direct', '直连'],
 ];
 
 export default function ConfigContainer() {
@@ -181,7 +181,7 @@ function Config({ configs }: ConfigImplProps) {
               <div className={s0.label}>{f.label}</div>
               <Input
                 name={f.key}
-                value={configState[f.key]}
+                value={configState[f.key]||''}
                 onChange={handleInputOnChange}
                 onBlur={handleInputOnBlur}
               />
@@ -190,7 +190,7 @@ function Config({ configs }: ConfigImplProps) {
         )}
 
         <div>
-          <div className={s0.label}>Mode</div>
+          <div className={s0.label}>连接模式</div>
           <Select
             options={modeOptions}
             selected={mode}
@@ -199,7 +199,7 @@ function Config({ configs }: ConfigImplProps) {
         </div>
 
         <div>
-          <div className={s0.label}>Log Level</div>
+          <div className={s0.label}>日志级别</div>
           <Select
             options={logLeveOptions}
             selected={configState['log-level']}
@@ -213,7 +213,7 @@ function Config({ configs }: ConfigImplProps) {
             checked={configState['allow-lan']}
             onChange={handleSwitchOnChange}
           />
-          <label htmlFor="config-allow-lan">Allow LAN</label>
+          <label htmlFor="config-allow-lan">是否允许局域网其他用户连接</label>
         </div>
       </div>
 

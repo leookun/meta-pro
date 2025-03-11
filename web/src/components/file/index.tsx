@@ -17,11 +17,15 @@ import 'prismjs/components/prism-yaml';
 import 'prismjs/themes/prism.css'; //Example style, you can use another
 
 export default function File() {
-  const { baseURL } = useApiConfig();
+  const { baseURL, secret } = useApiConfig();
   const [config, setConfig] = useState('');
   const { t } = useTranslation();
   const { data } = useQuery(['/config.yaml'], ctx => {
-    return fetch(`${baseURL}/config.yaml`).then(res => res.text())
+    return fetch(`${baseURL}/config.yaml`,{
+      headers: {
+        'Authorization': `Bearer ${secret}`,
+      },
+    }).then(res => res.text())
   });
 
   useEffect(() => {
@@ -33,6 +37,9 @@ export default function File() {
       return fetch(`${baseURL}/config.yaml`, {
         method: 'PUT',
         body: data,
+        headers: {
+          'Authorization': `Bearer ${secret}`,
+        },
       })
     },
   });
@@ -40,7 +47,10 @@ export default function File() {
     mutationFn: () => {
       return fetch(`${baseURL}/restart`, {
         method: 'POST',
-      })
+        headers: {
+          Authorization: `Bearer ${secret}`,
+        },
+      });
     },
   });
   
@@ -50,6 +60,7 @@ export default function File() {
   const saveAndRestart = async () => {
     await updateConfig.mutate(config);
     await restartServer.mutate();
+    window.location.reload();
   };
 
   const loading=useMemo(()=>{
@@ -57,16 +68,16 @@ export default function File() {
   },[updateConfig.isLoading,restartServer.isLoading])
   return (
     <div>
-      <ContentHeader title={t('文件')} />
+      <ContentHeader title={t('配置文件')} />
       <div className={s0.root}>
         <div className="flex gap-2 mb-4">
-          <Button
+          <button
             isLoading={loading}
             onClick={() => saveAndRestart()}
-            className="!px-4 !py-[3px] !text-[14px] !rounded-md"
+            className="!px-4 !py-[5px] !text-[14px] !rounded-md bg-blue-500 text-white hover:bg-blue-600 hover:shadow-md"
           >
             保存并重启
-          </Button>
+          </button>
         </div>
         <Editor
           className="w-full h-full"
@@ -75,8 +86,9 @@ export default function File() {
           padding={10}
           onValueChange={onValueChange}
           style={{
-            fontFamily: '"Fira code", "Fira Mono", monospace',
-            fontSize: 12,
+            fontFamily: 'system-ui',
+            fontSize: 14,
+            fontWeight: 'bold',
           }}
         />
       </div>

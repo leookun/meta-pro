@@ -7,7 +7,7 @@ export function Head() {
   const apiConfig = useApiConfig();
   const [apiConfigs] = useAtom(clashAPIConfigsAtom);
   React.useEffect(() => {
-    let title = 'yacd';
+    let title = '无敌猫咪';
     if (apiConfigs.length > 1) {
       try {
         title = `${apiConfig.metaLabel || new URL(apiConfig.baseURL).host} - yacd`;

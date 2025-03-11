@@ -1,5 +1,5 @@
 {
-  "name": "yacd",
+  "name": "无敌猫咪",
   "version": "0.3.8",
   "description": "Yet another Clash dashboard",
   "type": "module",
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "lint": "eslint --fix --cache src",
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "start": "vite",
     "build": "vite build",
     "serve": "vite preview",

@@ -37,19 +37,5 @@ export function ProxyListSummaryView({
   isSelectable,
   itemOnTapCallback,
 }: ProxyListProps) {
-  return (
-    <div className={s.listSummaryView}>
-      {all.map((proxyName) => {
-        return (
-          <ProxySmall
-            key={proxyName}
-            onClick={itemOnTapCallback}
-            isSelectable={isSelectable}
-            name={proxyName}
-            now={proxyName === now}
-          />
-        );
-      })}
-    </div>
-  );
+  return null
 }
