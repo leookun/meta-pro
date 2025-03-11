@@ -1,0 +1,57 @@
+.tr {
+  display: grid;
+  grid-template-columns: repeat(var(--col-count, 11), minmax(max-content, auto));
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.table {
+  border: none;
+  border-collapse: collapse;
+  thead tr {
+    position: sticky;
+    top: 0;
+    background: var(--color-background);
+  }
+  th {
+    padding: 8px 13px;
+    height: 50px;
+    font-weight: initial;
+    font-size: 0.8em;
+    text-align: left;
+    white-space: nowrap;
+  }
+  td {
+    border: none;
+    white-space: nowrap;
+    padding: 8px 13px;
+    font-size: 0.9em;
+    font-family: var(--font-normal);
+  }
+  & > tbody > tr:nth-of-type(odd) > * {
+    background: var(--color-row-odd);
+  }
+}
+
+.thWrap {
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  &:hover {
+    color: var(--color-text-highlight);
+  }
+}
+
+.sortIconContainer {
+  display: inline-flex;
+  margin-left: 10px;
+  width: 16px;
+  height: 16px;
+}
+
+.rotate180 {
+  transform: rotate(180deg);
+}

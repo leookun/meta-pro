@@ -1,0 +1,40 @@
+.root,
+.section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(345px, 1fr));
+  max-width: 900px;
+  gap: 5px;
+  @media screen and (min-width: 30em) {
+    gap: 15px;
+  }
+
+  .item {
+    margin-top: 11px;
+    label {
+      padding-left: 12px;
+    }
+  }
+}
+
+.root,
+.section {
+  padding: 6px 15px 10px;
+  @media screen and (min-width: 30em) {
+    padding: 10px 40px 15px;
+  }
+}
+
+.sep {
+  max-width: 900px;
+  padding: 0 15px;
+  @media screen and (min-width: 30em) {
+    padding: 0 40px;
+  }
+  > div {
+    border-top: 1px dashed #373737;
+  }
+}
+
+.label {
+  padding: 11px 0;
+}

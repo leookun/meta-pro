@@ -1,0 +1,25 @@
+.root {
+  padding: 6px 15px;
+  @media screen and (min-width: 30em) {
+    padding: 10px 40px;
+  }
+
+  p {
+    margin: 5px 0;
+  }
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.link {
+  color: var(--color-text-secondary);
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.link:hover {
+  color: var(--color-text-highlight);
+}
